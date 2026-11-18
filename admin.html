@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A.M.T Admin Panel</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f4f4f4;color:#222}
+header{background:#d71920;color:white;padding:20px;text-align:center}
+header h2{margin:0}
+nav{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:15px}
+nav a{background:#ffcc00;padding:15px;text-align:center;color:#222;text-decoration:none;font-weight:bold;border-radius:8px}
+main{padding:15px}
+section{background:white;padding:18px;margin-bottom:15px;border-radius:10px}
+h3{color:#d71920;margin-top:0}
+input,select{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:6px}
+button{background:#d71920;color:white;border:0;padding:12px 18px;border-radius:6px;font-weight:bold}
+table{width:100%;border-collapse:collapse}
+td,th{border:1px solid #ddd;padding:9px;text-align:left}
+footer{text-align:center;padding:20px;color:#777}
+</style>
+</head>
+<body>
+<header>
+<h2>A.M.T ADMIN PANEL</h2>
+<p>Online Shop Management</p>
+</header>
+
+<nav>
+<a href="#dashboard">Dashboard</a>
+<a href="#products">Products</a>
+<a href="#orders">Orders</a>
+<a href="#dealers">Dealers</a>
+<a href="#stock">Stock</a>
+<a href="#payments">Payments</a>
+<a href="#reports">Reports</a>
+</nav>
+
+<main>
+<section id="dashboard">
+<h3>Dashboard</h3>
+<p>Welcome to A.M.T Online Shop Admin.</p>
+<p>Total Products: 0</p>
+<p>New Orders: 0</p>
+<p>Total Dealers: 0</p>
+</section>
+
+<section id="products">
+<h3>Product Management</h3>
+<input id="pname" placeholder="Product Name">
+<input id="pbrand" placeholder="Brand">
+<input id="pprice" type="number" placeholder="Selling Price">
+<input id="pstock" type="number" placeholder="Stock Quantity">
+<button onclick="addProduct()">Add Product</button>
+<table>
+<thead><tr><th>Product</th><th>Brand</th><th>Price</th><th>Stock</th></tr></thead>
+<tbody id="productList"></tbody>
+</table>
+</section>
+
+<section id="orders">
+<h3>Order Management</h3>
+<p>Customer orders will appear here after database integration.</p>
+</section>
+
+<section id="dealers">
+<h3>Dealer Management</h3>
+<input placeholder="Dealer Name">
+<input placeholder="Phone Number">
+<button onclick="alert('Dealer form needs database connection')">Add Dealer</button>
+<p>Dealer approval and wholesale prices will be connected later.</p>
+</section>
+
+<section id="stock">
+<h3>Stock Management</h3>
+<p>Manage stock from Product Management above.</p>
+</section>
+
+<section id="payments">
+<h3>Payment Management</h3>
+<p>KPay | WavePay | Cash</p>
+<p>Payment records need database connection.</p>
+</section>
+
+<section id="reports">
+<h3>Sales & Profit Reports</h3>
+<p>Daily / Monthly reports will be available after database integration.</p>
+</section>
+</main>
+
+<footer>A.M.T Online Shop © 2026</footer>
+
+<script>
+function addProduct(){
+let name=document.getElementById('pname').value.trim();
+let brand=document.getElementById('pbrand').value.trim();
+let price=document.getElementById('pprice').value;
+let stock=document.getElementById('pstock').value;
+if(!name||!price){alert('Enter product name and price');return;}
+let row=document.createElement('tr');
+[name,brand,price,stock].forEach(v=>{
+let cell=document.createElement('td');
+cell.textContent=v;
+row.appendChild(cell);
+});
+document.getElementById('productList').appendChild(row);
+document.getElementById('pname').value='';
+document.getElementById('pbrand').value='';
+document.getElementById('pprice').value='';
+document.getElementById('pstock').value='';
+}
+</script>
+</body>
+</html>
